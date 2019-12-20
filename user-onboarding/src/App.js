@@ -1,5 +1,4 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
 import styled from 'styled-components';
 
@@ -21,7 +20,7 @@ function App() {
 
   return (
     <AppContainer className="App">
-      <img src="https://www.google.com/favicon.ico"/>
+      <img src="https://www.google.com/favicon.ico" alt="google logo"/>
       <h1>Create your Gooqle Account</h1>
       <OnboardForm />
     </AppContainer>

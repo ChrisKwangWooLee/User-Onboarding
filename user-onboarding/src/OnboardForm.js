@@ -4,7 +4,7 @@ import axios from 'axios';
 import * as Yup from 'yup';
 import {withFormik, Form, Field} from 'formik';
 import {Button, 
-        Row, Col, FormGroup, Label, Input,
+        Col, FormGroup, Label,
         CardGroup} from 'reactstrap'
 import styled from 'styled-components';
 import DisplayUsers from './DisplayUsers';
@@ -83,7 +83,7 @@ const OnboardForm = (props) => {
                     <RowContainer className="role-container">
                         <label htmlFor="role">Role</label>
                             <Field as="select" name="role" id="role">
-                                <option disable value="choose an option"></option>
+                                <option disabled value="choose an option"></option>
                                 <option value="For myself">For myself</option>
                                 <option value="To manage my business">To manage my business</option>
                             </Field>
@@ -92,14 +92,14 @@ const OnboardForm = (props) => {
                 </Top>
                 <div className="Address">
                     <h2 style={{fontSize: "20px"}}>Address</h2>
-                    <Col>
+                    <Col md={8}>
                         <FormGroup>
                             <Label for="exampleAddress">Address</Label>
                             <Field type="text" name="address" id="exampleAddress" placeholder="1234 Main St"/>
                             {touched.address && errors.address && <P className="errors">{errors.address}</P>}
                         </FormGroup>
                     </Col>
-                    <Col>
+                    <Col md={7}>
                         <FormGroup>
                             <Label for="exampleAddress2">Address 2</Label>
                             <Field type="text" name="address2" id="exampleAddress2" placeholder="Apartment, studio, or floor"/>
@@ -174,7 +174,7 @@ const FormikOnboardForm = withFormik({
             .required(`Last Name is required!`),
         email: Yup.string()
             .email('Invalid Email!')
-            .matches(/(waffle@syrup.com)/, 'That email is already taken.')
+            .notOneOf(['waffle@syrup.com', null], 'That email is already taken.')
             .required(`Email is required`),
         pw: Yup.string()
             .required(`Password is required`),
